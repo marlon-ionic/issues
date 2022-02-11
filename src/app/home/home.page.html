@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Autofill Issue
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+    <ion-toolbar color="primary">
+      <ion-title size="large">Autofill Issue</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="submit()">
+    <ion-list lines="none">
+			<ion-item lines="inset">
+				<ion-label position="floating">Username</ion-label>
+				<ion-input type="text" formControlName="username"></ion-input>
+			</ion-item>
+			<ion-item lines="inset">
+				<ion-label position="floating">Password</ion-label>
+				<ion-input type="password" formControlName="password"></ion-input>
+			</ion-item>
+      </ion-list>
+      <ion-button type="submit" expand="block" color="primary" class="ion-margin" [disabled]="formGroup.invalid">Login</ion-button>
+  </form>
 </ion-content>
